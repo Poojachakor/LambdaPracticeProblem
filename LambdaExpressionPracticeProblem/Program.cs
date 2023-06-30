@@ -27,6 +27,7 @@
             {
                 Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Phone Number: {student.PhoneNumber}, Address: {student.Address}, Age: {student.Age}");
             }
+
             // Sort students data in descending order based on TotalMarks (not mentioned in the Student class)
             // Assuming you want to sort by Age in descending order
             var sortedStudents = students.OrderByDescending(student => student.Age);
@@ -34,6 +35,19 @@
             foreach (var student in sortedStudents)
             {
                 Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Phone Number: {student.PhoneNumber}, Address: {student.Address}, Age: {student.Age}");
+            }
+
+            // Display all the student records in each address
+            var studentsByAddress = students.GroupBy(student => student.Address);
+            Console.WriteLine("\nStudents by Address:");
+            foreach (var group in studentsByAddress)
+            {
+                Console.WriteLine($"Address: {group.Key}");
+                foreach (var student in group)
+                {
+                    Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Phone Number: {student.PhoneNumber}, Age: {student.Age}");
+                }
+                Console.WriteLine();
             }
         }
 
